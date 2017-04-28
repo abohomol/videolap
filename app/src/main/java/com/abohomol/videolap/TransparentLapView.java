@@ -16,8 +16,9 @@ public class TransparentLapView extends View {
     private static final int TEXT_SIZE = 1000;
     private static final int TEXT_ALPHA = 175;
     private final Paint textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private Bitmap textBitmap;
     private final Xfermode xfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC);
+    private Bitmap textBitmap;
+    private String displayContent = "1";
 
     public TransparentLapView(Context context) {
         super(context);
@@ -42,6 +43,10 @@ public class TransparentLapView extends View {
         textPaint.setTextAlign(Paint.Align.CENTER);
     }
 
+    public void setContentToDisplay(String content) {
+        this.displayContent = content;
+    }
+
     @Override protected void onSizeChanged(int width, int height, int oldw, int oldh) {
         super.onSizeChanged(width, height, oldw, oldh);
         textBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
@@ -49,8 +54,7 @@ public class TransparentLapView extends View {
         canvas.drawColor(getColor(R.color.lap_background));
         int xPos = (canvas.getWidth() / 2);
         int yPos = (int) ((canvas.getHeight() / 2) - ((textPaint.descent() + textPaint.ascent()) / 2));
-        //TODO: parametrize text
-        canvas.drawText("1", xPos, yPos, textPaint);
+        canvas.drawText(displayContent, xPos, yPos, textPaint);
     }
 
     @Override protected void onDraw(Canvas canvas) {

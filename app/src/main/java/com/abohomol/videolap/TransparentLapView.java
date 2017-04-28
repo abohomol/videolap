@@ -18,7 +18,7 @@ public class TransparentLapView extends View {
     private final Paint textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Xfermode xfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC);
     private Bitmap textBitmap;
-    private String displayContent = "1";
+    private String displayContent = "";
 
     public TransparentLapView(Context context) {
         super(context);

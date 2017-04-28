@@ -1,9 +1,10 @@
 package com.abohomol.videolap;
 
-import android.app.Activity;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.VideoView;
@@ -13,7 +14,7 @@ import java.util.List;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     private VideoView videoView;
 
@@ -39,6 +40,8 @@ public class MainActivity extends Activity {
         }
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
         viewPager.setAdapter(new ViewPagerAdapter(views));
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.dotsLayout);
+        tabLayout.setupWithViewPager(viewPager, true);
     }
 
     private void startPlayback() {
